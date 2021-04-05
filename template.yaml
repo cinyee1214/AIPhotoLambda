@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Serverless Specification template describing your function.
+Resources:
+  LF1v2:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Code: 
+        S3Bucket: lambdafunctions111
+        S3Key: LF1_v2-fef27c04-387b-448d-adab-2dd2d3be4bca.zip
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.8
+      CodeUri: .
+      Description: ''
+      MemorySize: 128
+      Timeout: 300
+      Role: 'arn:aws:iam::690128978051:role/service-role/LF1-role-go4oal0b'
+      Events:
+        BucketEvent1:
+          Type: S3
+          Properties:
+            Bucket:
+              Ref: Bucket1
+            Events:
+              - 's3:ObjectCreated:Put'
+      Layers:
+        - 'arn:aws:lambda:us-east-1:690128978051:layer:libs:4'
+  Bucket1:
+    Type: 'AWS::S3::Bucket'
+  searchphotos:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Code: 
+        S3Bucket: lambdafunctions111
+        S3Key: search-photos-d22befd0-3685-4cd7-9f39-330b9988179c.zip
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.8
+      CodeUri: .
+      Description: ''
+      MemorySize: 128
+      Timeout: 303
+      Role: 'arn:aws:iam::690128978051:role/service-role/LF1-role-go4oal0b'
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /search
+            Method: GET
+      VpcConfig:
+        SecurityGroupIds:
+          - sg-0e945c51e04a2ae36
+        SubnetIds:
+          - subnet-e39cf085
+      Layers:
+        - 'arn:aws:lambda:us-east-1:690128978051:layer:libs:3'
