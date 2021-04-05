@@ -10,7 +10,7 @@ Resources:
         S3Key: LF1_v2-fef27c04-387b-448d-adab-2dd2d3be4bca.zip
       Handler: lambda_function.lambda_handler
       Runtime: python3.8
-      CodeUri: .
+      CodeUri: ./LF1_v2-fef27c04-387b-448d-adab-2dd2d3be4bca.zip
       Description: ''
       MemorySize: 128
       Timeout: 300
@@ -35,7 +35,7 @@ Resources:
         S3Key: search-photos-d22befd0-3685-4cd7-9f39-330b9988179c.zip
       Handler: lambda_function.lambda_handler
       Runtime: python3.8
-      CodeUri: .
+      CodeUri: ./search-photos-d22befd0-3685-4cd7-9f39-330b9988179c.zip
       Description: ''
       MemorySize: 128
       Timeout: 303
