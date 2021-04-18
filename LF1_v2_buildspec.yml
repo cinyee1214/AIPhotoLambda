@@ -1,0 +1,9 @@
+version: 0.2  
+phases:  
+  install:
+    commands:
+      - aws cloudformation package --template-file LF1_v2.yaml --s3-bucket backend-deployement-pipeline-bucket --output-template-file LF1_v2.yaml
+artifacts:  
+  type: zip
+  files:
+    - LF1_v2.yaml
